@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>JDE_Expense_Emergency</Title>
+      <Shortcut>JDE_Expense_Emergency</Shortcut>
+      <Description />
+      <Author />
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations />
+      <Code Language="sql"><![CDATA[SELECT     *
+FROM       JDE_PRODUCTION.PRODCTL.F98860 
+WHERE      
+PIPROCSTS='06'
+and 
+PISTDATE >116073 and [PIISTDATA] LIKE  '%885339%' AND [PIISTKEY] LIKE '%66916%'
+order by pistdate
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

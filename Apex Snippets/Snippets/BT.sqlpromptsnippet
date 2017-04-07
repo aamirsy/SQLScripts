@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>BT</Title>
+      <Shortcut>BT</Shortcut>
+      <Description>Begin Tran wrapped w/Rollback_Commit</Description>
+      <Author />
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations />
+      <Code Language="sql"><![CDATA[BEGIN TRAN
+
+--ROLLBACK TRAN
+--COMMIT TRAN]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Queries_Running</Title>
+      <Shortcut>Queries_Running</Shortcut>
+      <Description>Queries Running</Description>
+      <Author />
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations />
+      <Code Language="sql"><![CDATA[SELECT sqltext.TEXT,
+req.session_id,
+req.status,
+req.command,
+req.cpu_time,
+req.total_elapsed_time,
+'KILL '+ CAST([req].[session_id] AS VARCHAR(20)) AS [KILL_COMMAND]
+FROM sys.dm_exec_requests req
+CROSS APPLY sys.dm_exec_sql_text(sql_handle) AS sqltext]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

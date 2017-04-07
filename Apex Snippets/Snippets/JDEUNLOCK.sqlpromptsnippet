@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>JDEUNLOCK</Title>
+      <Shortcut>JDEUNLOCK</Shortcut>
+      <Description>JDE Unlock User</Description>
+      <Author />
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations />
+      <Code Language="sql"><![CDATA[SELECT [MIJOB#] AS JOBNUMBER
+      ,[MIAN8] AS ADDRESSBOOK
+      ,[MIEDUS] AS USERID
+      ,[MIALPH] AS NAME
+      ,[MIANPA] AS SUPERNO
+      ,[MIUSER1] AS SUPERID
+      ,[MIALPH1] AS SUPERNAME
+      ,[MISSFL] AS STATUSCODE
+      ,[MIEV01] AS LOCKFLAG
+      ,[MIPPED] AS PAYPERIODEND_DT
+      ,[MIURAB] AS RESERVEDNO
+      --,[MIGIURD] 
+      ,[MIURDT] AS UPDATEDDT
+      ,[MIUSER]
+      ,[MIPID]
+      ,[MIUPMJ]
+      ,[MIHMCO]
+      ,[MIDDTS]
+      ,[MITDAY] 
+  FROM [JDE_PRODUCTION].[PRODDTA].[F5506MI]
+WHERE  [MIEDUS] = '<5&2>'
+ORDER BY MIPPED,MIUPMJ
+
+--VERIFY BEFORE UPDATE
+SELECT COUNT(1)
+FROM   [JDE_PRODUCTION].[PRODDTA].[F5506MI]
+WHERE  [MIEV01] = 1 
+  AND  [MIEDUS]   = '<5&2>'
+
+--UPDATE THE ROWS  
+--UPDATE [JDE_PRODUCTION].[PRODDTA].[F5506MI] 
+--SET    [MIEV01] = 0 
+--WHERE  [MIEV01] = 1 
+--  AND  [MIEDUS] = '<5&2>'
+  
+--VERIFY AFTER UPDATE
+SELECT COUNT(1)
+FROM   [JDE_PRODUCTION].[PRODDTA].[F5506MI]
+WHERE  [MIEV01] = 1 
+AND    [MIEDUS] = '<5&2>'  ]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

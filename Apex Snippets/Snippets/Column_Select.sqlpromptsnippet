@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Column_Select</Title>
+      <Shortcut>Column_Select</Shortcut>
+      <Description>Select Columns</Description>
+      <Author />
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations />
+      <Code Language="sql"><![CDATA[SELECT '@'+[COLUMN_NAME] +' '+ [DATA_TYPE] + ' (' + CAST(ISNULL([CHARACTER_MAXIMUM_LENGTH], '') AS NCHAR(2)) +') = NULL,'
+FROM [INFORMATION_SCHEMA].[COLUMNS]
+WHERE [TABLE_NAME] = 'F55030Z']]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

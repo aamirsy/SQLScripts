@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WorkOrder</Title>
+      <Shortcut>WorkOrder</Shortcut>
+      <Description>WorkOrder script</Description>
+      <Author />
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations />
+      <Code Language="sql"><![CDATA[USE [JDE_PRODUCTION]
+GO
+SELECT * FROM (SELECT YAAN8 AS [AB_Number], [YAALPH] AS [NAME], 
+[EMPLOYEE] = CASE 
+	WHEN ABAT1 = 'E' THEN 'Employee'
+	ELSE 'Non-Employee'
+END
+, [DATE]=[DTA].[udf_OCH_IMCS_JulianToStandard_Get]([YAUPMJ]), [YAHMCO] AS [COMPANY], [type] = 'NEW' FROM
+DTA.F060116 AS A
+INNER JOIN DTA.F0101 AS B ON B.ABAN8 = A.YAAN8
+WHERE  [YAUPMJ] = [dbo].[udf_OCHQTE_JulianDate_Get](GETDATE())
+AND  YAUPMJ = YAPSDT
+UNION
+SELECT YAAN8, [YAALPH], [EMPLOYEE] = CASE 
+	WHEN ABAT1 = 'E' THEN 'Employee'
+	ELSE 'Non-Employee'
+END
+,[DATE]=[DTA].[udf_OCH_IMCS_JulianToStandard_Get]([YAUPMJ]), [YAHMCO], [type] = 'TERMINATED' FROM
+DTA.F060116 AS A
+INNER JOIN DTA.F0101 AS B ON B.ABAN8 = A.YAAN8
+WHERE  [YAUPMJ] = [dbo].[udf_OCHQTE_JulianDate_Get](GETDATE())
+AND YAUPMJ = YADT
+UNION
+SELECT YAAN8, [YAALPH],[EMPLOYEE] = CASE 
+	WHEN ABAT1 = 'E' THEN 'Employee'
+	ELSE 'Non-Employee'
+END
+, [DATE]=C.ContractorTermDate, [YAHMCO], [type] = 'EXTENDED'  
+FROM [DTA].[F060116] AS A
+INNER JOIN [DTA].[F550106] AS B ON B.[AEAN8] = A.[YAAN8]
+INNER JOIN [OCH-IP-SC4-I04\P04].ICMS.[dbo].[vw_ContractorTermDate] AS C ON C.ContractorID = A.YAAN8
+INNER JOIN DTA.F0101 AS D ON A.YAAN8 = D.ABAN8
+WHERE [A].[YAUPMJ] = [dbo].[udf_OCHQTE_JulianDate_Get](GETDATE())
+--UNION
+--SELECT YAAN8, [YAALPH], [DATE]=[DTA].[udf_OCH_IMCS_JulianToStandard_Get]([YAUPMJ]), [YAHMCO], [type] = 'NAME CHANGED'  
+--FROM [DTA].[F060116] AS A 
+--INNER JOIN [DTA].[F08042] AS B ON A.YAAN8 = B.[JWAN8]
+--WHERE JWFILE = 'F060116' AND JWDTAI='ALPH'
+--AND [JWEFTO] >= DATEADD(DAY, -2,[dbo].[udf_OCHQTE_JulianDate_Get](GETDATE()))
+) AS T 
+ORDER BY [T].[type], T.Name ]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

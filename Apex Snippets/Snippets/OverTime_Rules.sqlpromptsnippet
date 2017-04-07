@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>OverTime_Rules</Title>
+      <Shortcut>OverTime_Rules</Shortcut>
+      <Description />
+      <Author />
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations />
+      <Code Language="sql"><![CDATA[USE [JDE_PRODUCTION]
+GO
+SELECT  *--COUNT(1)
+FROM    PRODDTA.F0901 WITH (NOLOCK)
+WHERE   GMOBJ IN ('1320','4030','4220','5020','5050','5075','5275','6020','6050','6075','6275','7020','7035','7050','7075','7275','9999')
+AND GMPEC = 'B'
+AND GMMCU != '      MASTER'
+AND GMMCU NOT LIKE '      [0-9][0-9][0-9]WIP%'
+AND GMMCU LIKE '      %'
+AND GMSUB = ' ']]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

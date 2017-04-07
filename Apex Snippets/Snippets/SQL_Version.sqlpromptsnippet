@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>SQL_Version</Title>
+      <Shortcut>SQL_Version</Shortcut>
+      <Description>Get Sql Version Information</Description>
+      <Author />
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations />
+      <Code Language="sql"><![CDATA[SELECT  ServerName = SERVERPROPERTY('ServerName'), 
+        InstanceName = ISNULL(SERVERPROPERTY('InstanceName'),''), 
+        ProductVersion = SERVERPROPERTY('productversion'), 
+        ServicePack    = SERVERPROPERTY('productlevel'), 
+        Edition        = SERVERPROPERTY('edition'),
+        ComputerNamePhysicalNetBIOS = ISNULL(SERVERPROPERTY('ComputerNamePhysicalNetBIOS'),''), 
+        MachineName = SERVERPROPERTY('MachineName'), 
+        IsClustered = SERVERPROPERTY('IsClustered'), 
+        IsFullTextInstalled = SERVERPROPERTY('IsFullTextInstalled'), 
+        IsIntegratedSecurityOnly = SERVERPROPERTY('IsIntegratedSecurityOnly'), 
+        ResourceLastUpdateDateTime = SERVERPROPERTY('ResourceLastUpdateDateTime'), 
+        ResourceVersion = SERVERPROPERTY('ResourceVersion'), 
+        BuildClrVersion = SERVERPROPERTY('BuildClrVersion'), 
+        Collation       = SERVERPROPERTY('Collation'), 
+        SqlSortOrder = SERVERPROPERTY('SqlSortOrder'), 
+        SqlSortOrderName = SERVERPROPERTY('SqlSortOrderName')]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

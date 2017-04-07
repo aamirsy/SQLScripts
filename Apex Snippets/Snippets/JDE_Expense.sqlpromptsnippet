@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>JDE_Expense</Title>
+      <Shortcut>JDE_Expense</Shortcut>
+      <Description>Jde Expense Report reset</Description>
+      <Author />
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations />
+      <Code Language="sql"><![CDATA[SELECT     ExpenseReportNumber = A.EHEXRPTNUM,
+           EmployeeID          = A.EHEMPLOYID,
+           ManagerID           = A.EHMGRID,
+           UserID              = A.EHTORG,
+           ExpenseStatus       = A.EHEXRPTSTA,
+           ExpenseSubmitedDate = EHDATESUB,
+           ExpenseCreatedDate  = EHDTECRT
+FROM       PRODDTA.F20111 A 
+WHERE A.[EHEXRPTNUM] = 63055]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
