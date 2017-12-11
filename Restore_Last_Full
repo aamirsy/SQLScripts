@@ -1,0 +1,15 @@
+declare @backupfile as Varchar(255)
+
+SELECT TOP 1 @backupfile=mf.physical_device_name from msdb..backupset bk      
+join msdb..backupmediafamily mf on bk.media_set_id = mf.media_set_id   
+where database_name=N'sourcedatabasename' and bk.type='D' order by  
+backup_set_id desc
+
+ALTER DATABASE [databasename] SET  SINGLE_USER  WITH ROLLBACK IMMEDIATE 
+
+RESTORE DATABASE databasename
+FROM DISK = @backupfile
+WITH MOVE 'datafile' TO 'databasefilepath',
+MOVE 'logfilename' TO 'logfilepath', REPLACE
+
+ALTER DATABASE [databasename] SET  MULTI_USER  WITH ROLLBACK IMMEDIATE
